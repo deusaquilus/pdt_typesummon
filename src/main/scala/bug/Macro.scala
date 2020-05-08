@@ -7,8 +7,6 @@ trait Decoder[RowType, T] {
   def decode(row:RowType): T
 }
 
-case class Row1(row: String)
-
 trait Context {
   type RowType
   implicit def stringDecoder: Decoder[RowType, String]

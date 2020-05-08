@@ -2,6 +2,8 @@ package bug
 
 import Macro._
 
+case class Row1(row: String)
+
 class MyContext extends Context {
   type RowType = Row1
   implicit def stringDecoder: Decoder[Row1, String] =
