@@ -19,8 +19,6 @@ object Macro {
   def serveDecoderImpl[T: Type](context: Expr[Context])(using qctx: QuoteContext): Expr[T] = {
     import qctx.tasty._
 
-    val dect = '[$context.RowType]
-
     val tpe = '[Decoder[$context.RowType, T]]
     val decoderExpr = 
       Expr.summon(using tpe) match {
