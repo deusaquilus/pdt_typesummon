@@ -15,8 +15,8 @@ trait Context {
 
 object Macro {
 
-  inline def serveDecoder[T](context: Context): T = ${ serveDecoderImpl[T, context.RowType, Context]('context) }
-  def serveDecoderImpl[T: Type, U: Type, C <: Context { type RowType = U }: Type](context: Expr[Context])(using qctx: QuoteContext): Expr[T] = {
+  inline def serveDecoder[T](context: Context): T = ${ serveDecoderImpl('context) }
+  def serveDecoderImpl[T: Type, U: Type, C <: Context { type RowType = U }: Type](context: Expr[C])(using qctx: QuoteContext): Expr[T] = {
     import qctx.tasty._
 
     val tpe = '[Decoder[U, T]]
