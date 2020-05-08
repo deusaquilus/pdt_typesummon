@@ -17,5 +17,5 @@ class MyContext extends Context {
 @main def testMacro() = {
   val ctx = new MyContext()
   import ctx._
-  println( serveDecoder(ctx, classOf[String]) )
+  println( serveDecoder[String](ctx) )
 }
