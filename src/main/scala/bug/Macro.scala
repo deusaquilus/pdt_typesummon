@@ -18,7 +18,7 @@ object Macro {
 //  inline def serveDecoder[T](context: Context): T = ${ serveDecoderImpl[T, context.RowType, Context { type RowType = context.RowType }]('context) }
 //  Cyclic macro dependencies in /home/alexander/git/dotty/pdt_typesummon/src/main/scala/bug/Test.scala.
 
-  inline def serveDecoder[T](context: Context): T = ${ serveDecoderImpl[T, context.RowType, Context]('context) }
+  inline def serveDecoder[T](context: Context): T = ${ serveDecoderImpl[T, context.RowType, context.type]('context) }
   // Type argument bug.Context does not conform to upper bound bug.Context{RowType = context.RowType}
 
 
